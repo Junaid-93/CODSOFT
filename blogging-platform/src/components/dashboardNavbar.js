@@ -31,7 +31,7 @@ const DashboardNavbar = () => {
       <Link to="/write_now" className="mr-5 p-2 hover:bg-orange-500 hover:text-white rounded">Write now</Link>
       <Link to="/profile" className="mr-5 p-2 hover:bg-orange-500 hover:text-white rounded">Profile</Link>
     </nav>
-    <button className="inline-flex items-center border-solid border-2 border-orange-500 py-1 px-3 focus:outline-none hover:bg-orange-500 hover:text-white rounded text-base mt-4 md:mt-0">Logout
+    <button className="inline-flex items-center border-solid border-2 border-orange-500 py-1 px-3 focus:outline-none hover:bg-orange-500 hover:text-white rounded text-base mt-4 md:mt-0"><Link to="/login">Logout</Link>
       {/* <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
         <path d="M5 12h14M12 5l7 7-7 7"></path>
       </svg> */}
