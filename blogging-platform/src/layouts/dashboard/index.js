@@ -1,10 +1,14 @@
 import React from 'react'
 import DashboardNavbar from '../../components/dashboardNavbar'
+import Dashboard from '../../components/dashboard'
 
-const Dashboard = () => {
+const DashboardLayout = () => {
   return (
+    <>
     <DashboardNavbar />
+    <Dashboard />
+      </>
   )
 }
 
-export default Dashboard
+export default DashboardLayout

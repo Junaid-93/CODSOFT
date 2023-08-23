@@ -1,15 +1,14 @@
 import React from 'react'
 import DashboardNavbar from '../../components/dashboardNavbar'
+import MyBlogs from '../../components/myBlogs'
 
-import BlogCards from '../../components/blogCards'
-
-const BlogsPage = () => {
+const MyBlogsPage = () => {
   return (
     <>
     <DashboardNavbar />
-    <BlogCards />
+    <MyBlogs />
     </>
   )
 }
 
-export default BlogsPage
+export default MyBlogsPage

@@ -6,7 +6,6 @@ const RegisterPage = () => {
   return (
     <>
     <LandingNavbar />
-
     <RegisterForm />
     </>
   )

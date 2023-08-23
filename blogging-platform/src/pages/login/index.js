@@ -6,8 +6,7 @@ const LoginPage = () => {
   return (
     <>
     <LandingNavbar />
-
-        <LoginForm />
+    <LoginForm />
     </>
   )
 }
