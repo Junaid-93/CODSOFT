@@ -17,7 +17,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="  lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-            <img className=" shadow-2xl object-cover object-center rounded" alt="hero" src="https://source.unsplash.com/720x570/?blog,notebook"/>
+            {/* <img className=" shadow-2xl object-cover object-center rounded" alt="hero" src="https://source.unsplash.com/720x570/?blog,notebook"/> */}
           </div>
         </div>
       </section>

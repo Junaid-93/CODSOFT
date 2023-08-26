@@ -1,6 +1,6 @@
 import React from 'react'
 import DashboardNavbar from '../../components/dashboardNavbar'
-import Profile from '../../components/userProfileForm'
+import Profile from '../../components/profileForm'
 
 const ProfilePage = () => {
   return (

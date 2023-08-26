@@ -1,7 +1,28 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React , {useState} from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 const RegisterForm = () => {
+
+  const [registerData, setRegisterData] = useState({username: "", email: "", password: ""})
+
+  const navigate = useNavigate()
+
+  const handleChange = e => {
+    if (e.target.name === "password") {
+      setRegisterData({...registerData, [e.target.name] : e.target.value})
+    }
+    else {
+      setRegisterData({...registerData, [e.target.name] : e.target.value.toLowerCase()})
+    }
+  }
+
+    const handleSubmit = e => {
+      e.preventDefault()
+      setRegisterData({username: "", email: "", password: ""})
+      navigate("/login")
+      console.log(registerData);
+    }
+  
   return (
     <>
     <section id="NewBlog" className="text-gray-600 body-font relative">
@@ -15,26 +36,26 @@ const RegisterForm = () => {
               <div className="p-2 w-1/2">
                 <div className=" container relative" >
                   <label htmlFor="username" className="leading-7 text-sm text-gray-600">Username</label>
-                  <input type="text" id="username" name="username" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+                  <input type="text" id="username" name="username" value={registerData.username} onChange={handleChange} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
                 </div>
               </div>
 
               <div className="p-2 w-1/2">
                 <div className=" container relative" >
                   <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
-                  <input type="email" id="email" name="email" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+                  <input type="email" id="email" name="email" value={registerData.email} onChange={handleChange} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
                 </div>
               </div>
 
               <div className="p-2 w-1/2" >
                 <div className="relative">
                   <label htmlFor="password" className="leading-7 text-sm text-gray-600">Password</label>
-                  <input type="password" id="password" name="password" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+                  <input type="password" id="password" name="password" value={registerData.password} onChange={handleChange} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
                 </div>
               </div>
               <br></br>
               <div className="p-2 w-full">
-                <button className="flex mx-auto text-white bg-orange-500 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg">Register</button>
+                <button onClick={handleSubmit} className="flex mx-auto text-white bg-orange-500 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg">Register</button>
               </div>
               
               <div className="flex flex-col text-center w-full mb-12 ">

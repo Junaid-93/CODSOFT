@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 // import { Link } from 'react-router-dom'
 
 const Profile = () => {
@@ -40,7 +41,7 @@ const Profile = () => {
               </div>
 
               <div className="p-2 w-full">
-                <button className="flex mx-auto text-gray-700 bg-gray-100 border-0 py-2 px-8 focus:outline-none hover:bg-gray-200 rounded text-lg">My Blogs</button>
+                <button className="flex mx-auto text-gray-700 bg-gray-100 border-0 py-2 px-8 focus:outline-none hover:bg-gray-200 rounded text-lg"><Link to="/my_blogs">My Blogs</Link></button>
               </div>
                 
           </div> 
