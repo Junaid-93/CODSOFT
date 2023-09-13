@@ -1,10 +1,12 @@
 const express = require('express')
 const app = express()
+const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 
 const user = require('../models/userModel')
 
 const register = async (req, res) => {
+    // res.send("Register here")
     const {username, email, password } = req.body
         console.log("Data taken")
     if (!username || !email || !password) {

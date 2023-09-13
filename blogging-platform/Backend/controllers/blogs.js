@@ -52,7 +52,7 @@ const getBlogs = async (req, res) => {
 //@route PUT/PATCH /api/blogs/:blogId
 //@desc  Update blogs
 //@access Private
-const editBlogs = async (req, res) => {
+const editBlog = async (req, res) => {
     // const { exerciseName, exerciseType, duration, date, details } = req.body
     try {
         // select blog to update
@@ -66,9 +66,9 @@ const editBlogs = async (req, res) => {
             })
         }
         // Get user from token => req.user.id coming from token payload(req.user)
-        const user = await user.findById(req.user.id)
+        const User = await user.findById(req.user.id)
 
-        if (!user) {
+        if (!User) {
             res.status(403).json({ message: 'You are not allowed to Edit' })
         }
         // console.log(user)
@@ -93,8 +93,8 @@ const deleteBlog = async (req, res) => {
     if (!Blog) {
         res.status(404).json({ message: 'Blog Not Found' })
     }
-    const user = await user.findById(req.user.id)
-    if (!user) {
+    const User = await user.findById(req.user.id)
+    if (!User) {
         res.status(404).json({ message: 'User Not Found' })
     }
 
@@ -114,9 +114,9 @@ const deleteBlog = async (req, res) => {
 //@desc Get blog By Type
 //@access Private
 const getBlogByType = async (req, res) => {
-    const user = await user.findById(req.user.id)
+    const User = await user.findById(req.user.id)
     try {
-        if (!user) {
+        if (!User) {
             res.status(401).json({ message: 'You are not Authentic user.' })
         }
         const BlogsOfType = await blogs.find({
@@ -131,7 +131,7 @@ const getBlogByType = async (req, res) => {
 module.exports = {
     createBlog,
     getBlogs,
-    editBlogs,
+    editBlog,
     deleteBlog,
     getBlogByType
 }

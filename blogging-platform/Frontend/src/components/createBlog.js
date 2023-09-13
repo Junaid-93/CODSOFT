@@ -1,10 +1,14 @@
 import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
+import { url } from '../utilities/url'
+import axios from 'axios'
 
 const CreateBlog = () => {
     const [blogData, setBlogData] = useState({title: "", category: "", content: ""})
 
     const navigate = useNavigate()
+
+    // const [token, setToken] = useState('')
     
     const handleChange = e => {
         if (e.target.name === "category") {
@@ -15,12 +19,27 @@ const CreateBlog = () => {
         }
     }
 
-    const handleSubmit = e => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        setBlogData({title: "", category: "", content: ""})
-        navigate("/my_blogs")
-        console.log(blogData)
-    }
+        try {
+          const response = await axios.post(`${url}/blogs`, blogData,
+          // { headers: { Authorization: token } }
+          )
+          console.log('response: ', response)
+          setBlogData({title: "", category: "", content: ""})
+          navigate("/my_blogs")
+          console.log(blogData)
+
+          }
+          catch (error) {
+            console.log(error.message)
+        }
+      }
+      
+    //   useEffect(() => {
+    //     const localToken = JSON.parse(localStorage.getItem('token'))
+    //     setToken(localToken)
+    // }, [])
 
   return (
     <>

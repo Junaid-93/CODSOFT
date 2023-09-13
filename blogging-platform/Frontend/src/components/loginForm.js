@@ -1,5 +1,7 @@
 import React , { useState } from 'react'
 import { Link , useNavigate } from 'react-router-dom'
+import { url } from '../utilities/url'
+import axios from 'axios'
 
 const LoginForm = () => {
 
@@ -17,12 +19,23 @@ const LoginForm = () => {
     }
   }
 
-  const handleSubmit = e => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setLoginData({email : "", password : ""})
-    navigate("/dashboard")
-    console.log(loginData);
-  }
+      try {
+        const data = await axios.post(`${url}/login`, loginData)
+        console.log("response: ", data)
+      // localStorage.setItem('token',JSON.stringify(data.Token))
+
+        setLoginData({email : "", password : ""})
+        navigate("/dashboard")
+        console.log(loginData);
+      }
+      catch (error){
+        console.log((error.message));
+      }
+
+      }
+
 
   
   return (
