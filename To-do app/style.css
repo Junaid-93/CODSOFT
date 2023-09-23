@@ -1,0 +1,96 @@
+.main {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#content {
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+body {
+
+    background-image: linear-gradient(to right bottom, white, purple);
+    /* background-image: url(todo.png); */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover
+}
+
+h1 {
+    font-size: 50px;
+    margin: auto;
+}
+
+input {
+    border-radius: 5px;
+    padding: 10px 30px;
+    font-size: large;
+    background-color: rgb(224, 192, 246);
+    width: 70%;
+    margin: auto;
+
+}
+
+input:focus {
+    border: 3px solid purple;
+}
+
+#addBtn {
+    border-radius: 5px;
+    width: 40%;
+    background-color: purple;
+    color: white;
+    margin: auto;
+    padding: 5px;
+}
+
+.task-section {
+    display: flex;
+    margin: 20px;
+    font-size: large;
+
+}
+
+.edit-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit {
+    margin: 5px 10px;
+}
+
+
+.delete {
+    margin: 5px 10px;
+
+}
+
+#todos {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.task {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 3px solid black;
+    margin: 20px;
+    border-radius: 5px;
+}
+
+.save {
+    /* margin: auto; */
+    background-color: purple;
+    color: white;
+    width: 100%;
+}
+
+.updation {
+    margin: auto;
+}
