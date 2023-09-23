@@ -1,14 +1,18 @@
-import React, {useState} from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, {useState, useEffect} from 'react'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { url } from '../utilities/url'
 import axios from 'axios'
 
 const CreateBlog = () => {
-    const [blogData, setBlogData] = useState({title: "", category: "", content: ""})
+  const {state} = useLocation();
+    const [blogData, setBlogData] = useState({_id:'',title: "", category: "", content: ""})
 
+    useEffect(()=>{
+      setBlogData({title:state?.card?.title ||"", category: state?.card?.category ||  "", content: state?.card?.content || ""})
+    },[state?.card])
     const navigate = useNavigate()
 
-    // const [token, setToken] = useState('')
+    const [token, setToken] = useState('')
     
     const handleChange = e => {
         if (e.target.name === "category") {
@@ -23,7 +27,7 @@ const CreateBlog = () => {
         e.preventDefault()
         try {
           const response = await axios.post(`${url}/blogs`, blogData,
-          // { headers: { Authorization: token } }
+          { headers: { Authorization: token } }
           )
           console.log('response: ', response)
           setBlogData({title: "", category: "", content: ""})
@@ -36,17 +40,17 @@ const CreateBlog = () => {
         }
       }
       
-    //   useEffect(() => {
-    //     const localToken = JSON.parse(localStorage.getItem('token'))
-    //     setToken(localToken)
-    // }, [])
+      useEffect(() => {
+        const localToken = localStorage.getItem('token')
+        setToken(localToken)
+    }, [])
 
   return (
     <>
     <section id="NewBlog" className="text-gray-600 body-font relative">
         <div className="container px-5 py-10 mx-auto">
           <div className="flex flex-col text-center w-full mb-12">
-            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Create Blog</h1>
+            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">{state?.card?._id ? "Update":"Create"} Blog</h1>
             <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Write your blog to benefit people. Stay smiled ! </p>
           </div>
           <div className="lg:w-1/2 md:w-2/3 mx-auto">
@@ -71,7 +75,8 @@ const CreateBlog = () => {
                 </div>
               </div>
               <div className="p-2 w-full">
-                <button onClick={handleSubmit} className="flex mx-auto text-white bg-orange-500 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg">Submit Blog</button>
+                <button onClick={state?.card?._id ? handleUpdate:handleSubmit} className="flex mx-auto text-white bg-orange-500 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg">
+                  {state?.card?._id?"Update":"Submit"} Blog</button>
               </div>
                 
               

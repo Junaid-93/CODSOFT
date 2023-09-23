@@ -14,14 +14,14 @@ function App() {
     <>
     <BrowserRouter>
     <Routes>
-    <Route path="/" Component={LandingPage}>  </Route>
-    <Route path="/dashboard" Component={DashboardPage}>  </Route>
-    <Route path="/login" Component={LoginPage}></Route>
-    <Route path="/register" Component={RegisterPage}></Route>
-    <Route path="/blogs" Component={BlogsPage}></Route>
-    <Route path="/write_now" Component={CreateBlogPage}></Route>
-    <Route path="/profile" Component={ProfilePage}></Route>
-    <Route path="/my_blogs" Component={MyBlogsPage}></Route>
+    <Route path="/" element={<LandingPage />}>  </Route>
+    <Route path="/dashboard" element={<DashboardPage />}>  </Route>
+    <Route path="/login" element={<LoginPage />}></Route>
+    <Route path="/register" element={<RegisterPage />}></Route>
+    <Route path="/blogs" element={<BlogsPage />}></Route>
+    <Route path="/write_now" element={<CreateBlogPage />}></Route>
+    <Route path="/profile" element={<ProfilePage />}></Route>
+    <Route path="/my_blogs" element={<MyBlogsPage />}></Route>
     </Routes>
     </BrowserRouter>
     </>

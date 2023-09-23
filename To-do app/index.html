@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/3d6561fd4d.js" crossorigin="anonymous"></script>
+    <title>To-Do App</title>
+</head>
+<body>
+    <div class="main">
+        <div id="content">
+            <h1>To-Do List</h1>
+            <br>
+            <input type="text" placeholder="Add task" id="task">
+            <br>
+            <br>
+            <button id="addBtn">Add Task</button>
+            <br>
+            <br>
+            <div id="todos">
+                TASK-1
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js">
+
+const tasksArray = localStorage.getItem("tasks")
+  ? JSON.parse(localStorage.getItem("tasks"))
+  : [];
+
+console.log(tasksArray);
+
+document.querySelector("#addBtn").addEventListener("click", () => {
+const task = document.querySelector("#task");
+createTask(task);
+});
+
+function createTask(task) {
+  tasksArray.push(task.value);
+  localStorage.setItem("tasks", JSON.stringify(tasksArray));
+  location.reload();
+}
+
+function displaytasks() {
+  let todos = "";
+  for (let i = 0; i < tasksArray.length; i++) {
+    todos += `<div class="task">
+            <div class="task-section">
+                <textarea disabled>${tasksArray[i]}</textarea>
+                <div class="edit-section">
+                    <i class="fa-solid fa-pen-to-square edit"></i>
+                    <i class="fa-solid fa-trash delete"></i>
+                </div>
+            </div>
+            <div class="updation">
+                <button class="save">Save</button>
+                <button class="cancel">Cancel</button>
+            </div>
+        </div>`;
+  }
+  document.querySelector("#todos").innerHTML = todos;
+
+  activateDeleteListeners();
+  activateEditListeners();
+  activateSaveListeners();
+  activateCancelListeners();
+
+
+}
+
+function activateDeleteListeners() {
+  let deleteBtn = document.querySelectorAll(".delete");
+  deleteBtn.forEach((db, task) => {
+    db.addEventListener("click", () => {
+      deleteItem(task);
+    });
+  });
+}
+
+function activateEditListeners() {
+  const editBtn = document.querySelectorAll(".edit");
+  const updation = document.querySelectorAll(".updation");
+  const inputs = document.querySelectorAll(".task-section textarea");
+  editBtn.forEach((eb, task) => {
+    eb.addEventListener("click", () => {
+      updation[task].style.display = "block";
+      inputs[task].disabled = false;
+    });
+  });
+}
+
+function activateSaveListeners() {
+  const saveBtn = document.querySelectorAll(".save");
+  const inputs = document.querySelectorAll(".task-section textarea");
+  saveBtn.forEach((sb, task) => {
+    sb.addEventListener("click", () => {
+      updateItem(inputs[task].value, i);
+    });
+  });
+}
+
+function activateCancelListeners() {
+  const cancelBtn = document.querySelectorAll(".cancel");
+  const updateController = document.querySelectorAll(".update-controller");
+  const inputs = document.querySelectorAll(".task-section textarea");
+  cancelBtn.forEach((cb, i) => {
+    cb.addEventListener("click", () => {
+      updateController[i].style.display = "none";
+      inputs[i].disabled = true;
+    });
+  });
+}
+    </script>
+</body>
+</html>

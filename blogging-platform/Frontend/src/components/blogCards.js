@@ -11,9 +11,9 @@ const BlogCards = () => {
         const fetchingData = async () => {
 
             try {
-                const fetch = await axios.get("https://jsonplaceholder.typicode.com/posts")
-                    .then((res) => setBlogsData(res.data))
-                    console.log(fetch);
+                const { data } = await axios.get("https://jsonplaceholder.typicode.com/posts")
+                setBlogsData(data)
+                console.log(data);
             }
             catch (error) {
                 console.log(error.message)

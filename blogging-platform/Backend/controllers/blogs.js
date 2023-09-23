@@ -6,13 +6,15 @@ const mongoose = require('mongoose')
 
 const createBlog = async (req, res) => {
     const { title, category, content } = req.body
+    console.log(req.body);
+    console.log(req.user);
 
     try {
         // create blog
         // req.user is coming from verifyToken middleware ---------------??????
         // console.log(req.user)
         const blog = await blogs.create({
-            userId: req.user.id,
+            userId: req?.user?.id,
             title,
             category,
             content,
@@ -38,7 +40,7 @@ const getBlogs = async (req, res) => {
         const Blogs = await blogs.find({
             userId: new mongoose.Types.ObjectId(req.user.id),
         })
-        if (Blogs.length === 0) {
+        if (Blogs.length == 0) {
             return res
                 .status(404)
                 .json({ message: 'Blogs Not Found, Add New' })
@@ -54,10 +56,11 @@ const getBlogs = async (req, res) => {
 //@access Private
 const editBlog = async (req, res) => {
     // const { exerciseName, exerciseType, duration, date, details } = req.body
+    console.log('params',req.params);
     try {
         // select blog to update
         // console.log(req.params.blogId)
-        const Blog = await blogs.findById(req.params.blogId)
+        const Blog = await blogs.findOne({_id:req.params.blogID})
         // console.log(exercise)
         if (!Blog) {
             res.status(404).json({
@@ -66,15 +69,15 @@ const editBlog = async (req, res) => {
             })
         }
         // Get user from token => req.user.id coming from token payload(req.user)
-        const User = await user.findById(req.user.id)
+        // const User = await user.findById(req.user.id)
 
-        if (!User) {
-            res.status(403).json({ message: 'You are not allowed to Edit' })
-        }
+        // if (!User) {
+        //     res.status(403).json({ message: 'You are not allowed to Edit' })
+        // }
         // console.log(user)
         // Now update blog
         const updatedBlog = await blogs.findByIdAndUpdate(
-            { _id: req.params.blogId },
+            { _id: req.params.blogID },
             req.body,
             { new: true, runValidators: true }
         )

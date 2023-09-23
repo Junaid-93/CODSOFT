@@ -1,6 +1,10 @@
 const mongoose = require('mongoose')
 
 const blogs = new mongoose.Schema({
+    userId:{
+        type:String,
+        required:[true, "ID is required"],
+    },
     title:{
         type:String,
         required:[true, "Title is required"],
@@ -12,6 +16,11 @@ const blogs = new mongoose.Schema({
     content:{
         type:String,
         required:[true, "Content is required"]
+    },
+    date:{
+        type:String,
+        required:[true, "date is required"]
+
     }
 
 })

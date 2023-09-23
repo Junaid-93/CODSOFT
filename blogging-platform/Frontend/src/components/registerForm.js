@@ -22,7 +22,7 @@ const RegisterForm = () => {
       e.preventDefault()
 
       try {
-        const response = await axios.post(`${url}/register`,registerData)
+        const response = await axios.post(`${url}/users/register`,registerData)
         console.log("response: ", response);
         setRegisterData({username: "", email: "", password: ""})
         navigate("/login")

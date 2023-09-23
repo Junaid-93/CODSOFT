@@ -22,9 +22,9 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
       try {
-        const data = await axios.post(`${url}/login`, loginData)
+        const data = await axios.post(`${url}/users/login`, loginData)
         console.log("response: ", data)
-      // localStorage.setItem('token',JSON.stringify(data.Token))
+      localStorage.setItem('token',`Bearer ${data.data.token}`)
 
         setLoginData({email : "", password : ""})
         navigate("/dashboard")

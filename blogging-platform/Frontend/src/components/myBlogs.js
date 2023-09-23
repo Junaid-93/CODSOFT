@@ -1,5 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import axios from 'axios'
 import { url } from '../utilities/url'
 
@@ -7,19 +9,34 @@ const MyBlogs = () => {
 
   const [blogsData, setBlogsData] = useState([])
 
+  const navigate = useNavigate()
+
+
+ const handleEdit = (id,index)=>{
+  let blog = blogsData[index];
+  console.log('blog',blog);
+  navigate('/write_now', {state:{card:blog}})
+  
+  // axios.put(`${url}/blogs/${id}`,{},{ headers: { Authorization: localStorage.getItem('token') } })
+  // .then(res => console.log(res))
+  // .catch(err => console.log(err))
+  // navigate('/write_now')
+
+ }
   useEffect(() => {
       const fetchingData = async () => {
 
           try {
-              const fetch = await axios.get(`${url}/blogs`)
-                  .then((res) => setBlogsData(res.data))
-                  console.log(fetch);
+              const {data} = await axios.get(`${url}/blogs`,
+              { headers: { Authorization: localStorage.getItem('token') } })
+                  setBlogsData(data?.Blogs)
+                  console.log(data);
           }
           catch (error) {
               console.log(error.message)
           }
       }
-      fetchingData()
+      fetchingData();
   }, [])
   var currentDate = new Date()
   var blogDate = currentDate.getDate()
@@ -34,9 +51,9 @@ const MyBlogs = () => {
                 </p> */}
               </div>
               <div className=" mx-auto mt-5 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-gray-200 pt-5 sm:mt-10 sm:pt-5 lg:mx-0 lg:max-w-none lg:grid-cols-2 ">
-                {blogsData.map((post) => (
-                  <article  className="border-solid border-2 p-3 flex max-w-xl flex-col items-start justify-between">
-                    {/* key={post.id*2} */}
+                {blogsData?.map((post,index) => (
+                  <article key={post._id} className="border-solid border-2 p-3 flex max-w-xl flex-col items-start justify-between">
+                    <button onClick={()=>handleEdit(post._id,index)}>Edit</button>
                     <div className="group relative">
                       <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
                       

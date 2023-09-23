@@ -10,6 +10,7 @@ arr.forEach(button => {
             inputScreen.value = 0
         }
         else if (e.target.innerHTML === "=" && string != "") {
+            
             string = eval(string)
             inputScreen.value = string
         }
@@ -22,8 +23,9 @@ arr.forEach(button => {
             inputScreen.value = string
         }
         else {
-            string += e.target.innerHTML
-            inputScreen.value = string
+                string += e.target.innerHTML
+         inputScreen.value = string
+           
         }
     })
 })

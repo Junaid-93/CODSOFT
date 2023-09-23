@@ -3,13 +3,12 @@ const router = express.Router()
 const {createBlog, getBlogByType, editBlog,
         deleteBlog, getBlogs} = require('../controllers/blogs')
 
-// const verifyToken = require('../middilwares/auth')
+const verifyToken = require('../middilwares/auth')
 
-router.post("/", createBlog)
-router.get("/", getBlogs)
-router.put("/:blogID", editBlog)
-router.patch("/:blogID", editBlog)
-router.delete("/:blogID",deleteBlog)
-router.get("/:type", getBlogByType)
+router.post("/",verifyToken, createBlog)
+router.get("/", verifyToken,getBlogs)
+router.put("/:blogID",verifyToken, editBlog)
+router.delete("/:blogID",verifyToken,deleteBlog)
+router.get("/:type",verifyToken, getBlogByType)
 
 module.exports = router
