@@ -1,0 +1,103 @@
+body {
+    background-color: black;
+    color: aliceblue;
+    margin: auto;
+}
+ 
+#navBar {
+    display: flex;    
+    flex-direction: row;
+    
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(36 36 94);
+}
+
+#logo {
+    font-size: 1.8vw;
+
+
+}
+
+.nav-list {
+    list-style-type: none;
+    display: flex;
+}
+
+.nav-li {
+    margin: 0 1.5vw;
+    font-size: 1.5vw;
+    padding: .5vw .5vw;
+    color: aliceblue;
+    text-decoration: none;
+}
+
+.nav-li:hover {
+    background-color: aliceblue;
+    color: rgb(36 36 94);
+    border-radius: 2px;
+    padding: .5vw .5vw
+}
+
+#div2 {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+#intro {
+    font-size: 3vw;
+    /* margin-left: -100px; */
+    /* text-align:left; */
+}
+
+#footer-div {
+    display: flex;
+    justify-content: space-around;
+}
+
+#footer-logo {
+    font-size: 1.8vw;
+    margin: auto auto;
+
+}
+
+.footer-list {
+    list-style-type: none;
+    margin: auto auto;
+}
+
+.footer-li {
+    font-size: 1vw;
+}
+
+#footer-main-div {
+    background-color: rgb(36 36 94);
+
+}
+
+#LastLine {
+    font-size: .9vw;
+    text-align: center;
+}
+hr{
+    margin: 1vw auto
+}
+
+#about {
+    font-size: 2vw;
+    max-width: 40%;
+}
+section{
+    margin: 5vw auto;
+    /* text-align: left; */
+}
+
+@media screen and (min-width: 430px) {
+    
+    
+}
+
+svg{
+    margin-left: 20px;
+}
