@@ -3,11 +3,12 @@ body {
     color: aliceblue;
     margin: auto;
 }
- 
+
+
+
 #navBar {
     display: flex;    
     flex-direction: row;
-    
     justify-content: space-around;
     align-items: center;
     background-color: rgb(36 36 94);
@@ -42,11 +43,15 @@ body {
 #div2 {
     display: flex;
     justify-content: space-around;
+    height: 85vh;
 }
 
-
-#intro {
+#start_note{
     font-size: 3vw;
+
+}
+#intro {
+    font-size: 2vw;
     /* margin-left: -100px; */
     /* text-align:left; */
 }
@@ -63,15 +68,6 @@ body {
 
 }
 
-.footer-list {
-    list-style-type: none;
-    margin: auto auto;
-}
-
-.footer-li {
-    font-size: 1vw;
-}
-
 #footer-main-div {
     background-color: rgb(36 36 94);
 
@@ -82,7 +78,7 @@ body {
     text-align: center;
 }
 hr{
-    margin: 1vw auto
+    margin: .5vw auto
 }
 
 #about {
@@ -92,6 +88,7 @@ hr{
 section{
     margin: 5vw auto;
     /* text-align: left; */
+    
 }
 
 
