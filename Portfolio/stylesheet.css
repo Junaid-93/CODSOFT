@@ -54,6 +54,7 @@ body {
 #footer-div {
     display: flex;
     justify-content: space-around;
+    text-align: center;
 }
 
 #footer-logo {
@@ -93,10 +94,6 @@ section{
     /* text-align: left; */
 }
 
-@media screen and (min-width: 430px) {
-    
-    
-}
 
 svg{
     margin-left: 20px;
@@ -116,3 +113,7 @@ svg{
     border-radius: 10px;
 }
 
+.SMLinks, .SMLinks:hover, .SMLinks:active, .SMLinks::after{
+    color: white;
+    text-decoration: none;
+}

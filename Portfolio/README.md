@@ -1,2 +1,0 @@
-# Portfolio
-Static Personal Portfolio
