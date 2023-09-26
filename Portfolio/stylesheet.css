@@ -3,9 +3,6 @@ body {
     color: aliceblue;
     margin: auto;
 }
-
-
-
 #navBar {
     display: flex;    
     flex-direction: row;
